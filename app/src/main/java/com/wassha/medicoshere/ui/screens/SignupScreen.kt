@@ -46,9 +46,9 @@ fun SignupScreen(
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFF2E7D32), // Dark green
-                        Color(0xFF388E3C), // Medium green
-                        Color(0xFF4CAF50)  // Light green
+                        Color(0xFFE8F5E8), // Very light green
+                        Color(0xFFF1F8E9), // Light mint
+                        Color(0xFFF9FBE7)  // Light cream
                     )
                 )
             )
@@ -63,7 +63,7 @@ fun SignupScreen(
                 title = { 
                     Text(
                         text = "Sign Up",
-                        color = Color.White
+                        color = Color(0xFF2E7D32)
                     ) 
                 },
                 navigationIcon = {
@@ -71,7 +71,7 @@ fun SignupScreen(
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back",
-                            tint = Color.White
+                            tint = Color(0xFF2E7D32)
                         )
                     }
                 },
@@ -91,7 +91,7 @@ fun SignupScreen(
                     text = "Create Account",
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color(0xFF2E7D32)
                 )
                 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -99,7 +99,7 @@ fun SignupScreen(
                 Text(
                     text = "Join Medicos Here today",
                     fontSize = 16.sp,
-                    color = Color.White.copy(alpha = 0.95f)
+                    color = Color(0xFF2E7D32).copy(alpha = 0.8f)
                 )
                 
                 Spacer(modifier = Modifier.height(40.dp))
@@ -118,15 +118,15 @@ fun SignupScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color.White,
-                        unfocusedBorderColor = Color.White.copy(alpha = 0.7f),
-                        focusedLabelColor = Color.White,
-                        unfocusedLabelColor = Color.White.copy(alpha = 0.8f),
-                        cursorColor = Color.White,
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White.copy(alpha = 0.9f),
-                        focusedLeadingIconColor = Color.White,
-                        unfocusedLeadingIconColor = Color.White.copy(alpha = 0.7f)
+                        focusedBorderColor = Color(0xFF2E7D32),
+                        unfocusedBorderColor = Color(0xFF2E7D32).copy(alpha = 0.7f),
+                        focusedLabelColor = Color(0xFF2E7D32),
+                        unfocusedLabelColor = Color(0xFF2E7D32).copy(alpha = 0.8f),
+                        cursorColor = Color(0xFF2E7D32),
+                        focusedTextColor = Color(0xFF2E7D32),
+                        unfocusedTextColor = Color(0xFF2E7D32).copy(alpha = 0.9f),
+                        focusedLeadingIconColor = Color(0xFF2E7D32),
+                        unfocusedLeadingIconColor = Color(0xFF2E7D32).copy(alpha = 0.7f)
                     ),
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Next
@@ -149,15 +149,15 @@ fun SignupScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color.White,
-                        unfocusedBorderColor = Color.White.copy(alpha = 0.7f),
-                        focusedLabelColor = Color.White,
-                        unfocusedLabelColor = Color.White.copy(alpha = 0.8f),
-                        cursorColor = Color.White,
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White.copy(alpha = 0.9f),
-                        focusedLeadingIconColor = Color.White,
-                        unfocusedLeadingIconColor = Color.White.copy(alpha = 0.7f)
+                        focusedBorderColor = Color(0xFF2E7D32),
+                        unfocusedBorderColor = Color(0xFF2E7D32).copy(alpha = 0.7f),
+                        focusedLabelColor = Color(0xFF2E7D32),
+                        unfocusedLabelColor = Color(0xFF2E7D32).copy(alpha = 0.8f),
+                        cursorColor = Color(0xFF2E7D32),
+                        focusedTextColor = Color(0xFF2E7D32),
+                        unfocusedTextColor = Color(0xFF2E7D32).copy(alpha = 0.9f),
+                        focusedLeadingIconColor = Color(0xFF2E7D32),
+                        unfocusedLeadingIconColor = Color(0xFF2E7D32).copy(alpha = 0.7f)
                     ),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email,
@@ -182,15 +182,15 @@ fun SignupScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color.White,
-                        unfocusedBorderColor = Color.White.copy(alpha = 0.7f),
-                        focusedLabelColor = Color.White,
-                        unfocusedLabelColor = Color.White.copy(alpha = 0.8f),
-                        cursorColor = Color.White,
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White.copy(alpha = 0.9f),
-                        focusedLeadingIconColor = Color.White,
-                        unfocusedLeadingIconColor = Color.White.copy(alpha = 0.7f)
+                        focusedBorderColor = Color(0xFF2E7D32),
+                        unfocusedBorderColor = Color(0xFF2E7D32).copy(alpha = 0.7f),
+                        focusedLabelColor = Color(0xFF2E7D32),
+                        unfocusedLabelColor = Color(0xFF2E7D32).copy(alpha = 0.8f),
+                        cursorColor = Color(0xFF2E7D32),
+                        focusedTextColor = Color(0xFF2E7D32),
+                        unfocusedTextColor = Color(0xFF2E7D32).copy(alpha = 0.9f),
+                        focusedLeadingIconColor = Color(0xFF2E7D32),
+                        unfocusedLeadingIconColor = Color(0xFF2E7D32).copy(alpha = 0.7f)
                     ),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Password,
@@ -215,15 +215,15 @@ fun SignupScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color.White,
-                        unfocusedBorderColor = Color.White.copy(alpha = 0.7f),
-                        focusedLabelColor = Color.White,
-                        unfocusedLabelColor = Color.White.copy(alpha = 0.8f),
-                        cursorColor = Color.White,
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White.copy(alpha = 0.9f),
-                        focusedLeadingIconColor = Color.White,
-                        unfocusedLeadingIconColor = Color.White.copy(alpha = 0.7f)
+                        focusedBorderColor = Color(0xFF2E7D32),
+                        unfocusedBorderColor = Color(0xFF2E7D32).copy(alpha = 0.7f),
+                        focusedLabelColor = Color(0xFF2E7D32),
+                        unfocusedLabelColor = Color(0xFF2E7D32).copy(alpha = 0.8f),
+                        cursorColor = Color(0xFF2E7D32),
+                        focusedTextColor = Color(0xFF2E7D32),
+                        unfocusedTextColor = Color(0xFF2E7D32).copy(alpha = 0.9f),
+                        focusedLeadingIconColor = Color(0xFF2E7D32),
+                        unfocusedLeadingIconColor = Color(0xFF2E7D32).copy(alpha = 0.7f)
                     ),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Password,
@@ -271,7 +271,7 @@ fun SignupScreen(
                 Text(
                     text = "By signing up, you agree to our Terms of Service and Privacy Policy",
                     fontSize = 12.sp,
-                    color = Color.White.copy(alpha = 0.8f),
+                    color = Color(0xFF2E7D32).copy(alpha = 0.8f),
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center
                 )
             }

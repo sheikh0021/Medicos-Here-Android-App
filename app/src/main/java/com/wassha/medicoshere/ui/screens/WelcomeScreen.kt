@@ -24,7 +24,8 @@ import com.wassha.medicoshere.ui.theme.MedicosHereTheme
 @Composable
 fun WelcomeScreen(
     onSignupClick: () -> Unit,
-    onLoginClick: () -> Unit
+    onLoginClick: () -> Unit,
+    onSignupDirectClick: () -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -32,9 +33,9 @@ fun WelcomeScreen(
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFF2E7D32), // Dark green
-                        Color(0xFF388E3C), // Medium green
-                        Color(0xFF4CAF50)  // Light green
+                        Color(0xFFE8F5E8), // Very light green
+                        Color(0xFFF1F8E9), // Light mint
+                        Color(0xFFF9FBE7)  // Light cream
                     )
                 )
             )
@@ -59,14 +60,14 @@ fun WelcomeScreen(
             Text(
                 text = "Welcome to",
                 fontSize = 24.sp,
-                color = Color.White,
+                color = Color(0xFF2E7D32),
                 fontWeight = FontWeight.Light
             )
             
             Text(
                 text = "Medicos Here",
                 fontSize = 36.sp,
-                color = Color.White,
+                color = Color(0xFF2E7D32),
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
@@ -76,16 +77,16 @@ fun WelcomeScreen(
             Text(
                 text = "Your trusted healthcare companion",
                 fontSize = 16.sp,
-                color = Color.White.copy(alpha = 0.95f),
+                color = Color(0xFF2E7D32).copy(alpha = 0.8f),
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Medium
             )
             
             Spacer(modifier = Modifier.height(80.dp))
             
-            // Sign Up Button
-            Button(
-                onClick = onSignupClick,
+                            // Sign Up Button
+                Button(
+                    onClick = onSignupDirectClick,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
@@ -112,11 +113,11 @@ fun WelcomeScreen(
                     .height(56.dp),
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = Color.White
+                    contentColor = Color(0xFF2E7D32)
                 ),
                 border = androidx.compose.foundation.BorderStroke(
                     2.dp,
-                    Color.White
+                    Color(0xFF2E7D32)
                 )
             ) {
                 Text(

@@ -30,7 +30,8 @@ import com.wassha.medicoshere.ui.theme.MedicosHereTheme
 @Composable
 fun LoginScreen(
     onBackClick: () -> Unit,
-    onLoginSuccess: () -> Unit
+    onLoginSuccess: () -> Unit,
+    onSignupClick: () -> Unit = {}
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -45,9 +46,9 @@ fun LoginScreen(
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFF2E7D32), // Dark green
-                        Color(0xFF388E3C), // Medium green
-                        Color(0xFF4CAF50)  // Light green
+                        Color(0xFFE8F5E8), // Very light green
+                        Color(0xFFF1F8E9), // Light mint
+                        Color(0xFFF9FBE7)  // Light cream
                     )
                 )
             )
@@ -62,7 +63,7 @@ fun LoginScreen(
                 title = { 
                     Text(
                         text = "Login",
-                        color = Color.White
+                        color = Color(0xFF2E7D32)
                     ) 
                 },
                 navigationIcon = {
@@ -98,7 +99,7 @@ fun LoginScreen(
                 Text(
                     text = "Sign in to your account",
                     fontSize = 16.sp,
-                    color = Color.White.copy(alpha = 0.95f)
+                    color = Color(0xFF2E7D32).copy(alpha = 0.8f)
                 )
                 
                 Spacer(modifier = Modifier.height(40.dp))
@@ -117,15 +118,15 @@ fun LoginScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color.White,
-                        unfocusedBorderColor = Color.White.copy(alpha = 0.7f),
-                        focusedLabelColor = Color.White,
-                        unfocusedLabelColor = Color.White.copy(alpha = 0.8f),
-                        cursorColor = Color.White,
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White.copy(alpha = 0.9f),
-                        focusedLeadingIconColor = Color.White,
-                        unfocusedLeadingIconColor = Color.White.copy(alpha = 0.7f)
+                        focusedBorderColor = Color(0xFF2E7D32),
+                        unfocusedBorderColor = Color(0xFF2E7D32).copy(alpha = 0.7f),
+                        focusedLabelColor = Color(0xFF2E7D32),
+                        unfocusedLabelColor = Color(0xFF2E7D32).copy(alpha = 0.8f),
+                        cursorColor = Color(0xFF2E7D32),
+                        focusedTextColor = Color(0xFF2E7D32),
+                        unfocusedTextColor = Color(0xFF2E7D32).copy(alpha = 0.9f),
+                        focusedLeadingIconColor = Color(0xFF2E7D32),
+                        unfocusedLeadingIconColor = Color(0xFF2E7D32).copy(alpha = 0.7f)
                     ),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email,
@@ -150,15 +151,15 @@ fun LoginScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color.White,
-                        unfocusedBorderColor = Color.White.copy(alpha = 0.7f),
-                        focusedLabelColor = Color.White,
-                        unfocusedLabelColor = Color.White.copy(alpha = 0.8f),
-                        cursorColor = Color.White,
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White.copy(alpha = 0.9f),
-                        focusedLeadingIconColor = Color.White,
-                        unfocusedLeadingIconColor = Color.White.copy(alpha = 0.7f)
+                        focusedBorderColor = Color(0xFF2E7D32),
+                        unfocusedBorderColor = Color(0xFF2E7D32).copy(alpha = 0.7f),
+                        focusedLabelColor = Color(0xFF2E7D32),
+                        unfocusedLabelColor = Color(0xFF2E7D32).copy(alpha = 0.8f),
+                        cursorColor = Color(0xFF2E7D32),
+                        focusedTextColor = Color(0xFF2E7D32),
+                        unfocusedTextColor = Color(0xFF2E7D32).copy(alpha = 0.9f),
+                        focusedLeadingIconColor = Color(0xFF2E7D32),
+                        unfocusedLeadingIconColor = Color(0xFF2E7D32).copy(alpha = 0.7f)
                     ),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Password,
@@ -188,7 +189,7 @@ fun LoginScreen(
                         )
                         Text(
                             text = "Remember me",
-                            color = Color.White,
+                            color = Color(0xFF2E7D32),
                             fontSize = 14.sp
                         )
                     }
@@ -198,7 +199,7 @@ fun LoginScreen(
                     ) {
                         Text(
                             text = "Forgot Password?",
-                            color = Color.White,
+                            color = Color(0xFF2E7D32),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Medium
                         )
@@ -248,17 +249,17 @@ fun LoginScreen(
                 ) {
                     HorizontalDivider(
                         modifier = Modifier.weight(1f),
-                        color = Color.White.copy(alpha = 0.5f)
+                        color = Color(0xFF2E7D32).copy(alpha = 0.5f)
                     )
                     Text(
                         text = "OR",
                         modifier = Modifier.padding(horizontal = 16.dp),
-                        color = Color.White.copy(alpha = 0.8f),
+                        color = Color(0xFF2E7D32).copy(alpha = 0.8f),
                         fontSize = 14.sp
                     )
                     HorizontalDivider(
                         modifier = Modifier.weight(1f),
-                        color = Color.White.copy(alpha = 0.5f)
+                        color = Color(0xFF2E7D32).copy(alpha = 0.5f)
                     )
                 }
                 
@@ -272,11 +273,11 @@ fun LoginScreen(
                         .height(48.dp),
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White
+                        contentColor = Color(0xFF2E7D32)
                     ),
                     border = androidx.compose.foundation.BorderStroke(
                         1.dp,
-                        Color.White.copy(alpha = 0.7f)
+                        Color(0xFF2E7D32).copy(alpha = 0.7f)
                     )
                 ) {
                     Text(
@@ -295,11 +296,11 @@ fun LoginScreen(
                         .height(48.dp),
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White
+                        contentColor = Color(0xFF2E7D32)
                     ),
                     border = androidx.compose.foundation.BorderStroke(
                         1.dp,
-                        Color.White.copy(alpha = 0.7f)
+                        Color(0xFF2E7D32).copy(alpha = 0.7f)
                     )
                 ) {
                     Text(
@@ -318,15 +319,15 @@ fun LoginScreen(
                 ) {
                     Text(
                         text = "Don't have an account? ",
-                        color = Color.White.copy(alpha = 0.8f),
+                        color = Color(0xFF2E7D32).copy(alpha = 0.8f),
                         fontSize = 14.sp
                     )
                     TextButton(
-                        onClick = { /* Navigate to signup */ }
+                        onClick = onSignupClick
                     ) {
                         Text(
                             text = "Sign Up",
-                            color = Color.White,
+                            color = Color(0xFF2E7D32),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold
                         )

@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.wassha.medicoshere.ui.screens.DashboardScreen
 import com.wassha.medicoshere.ui.screens.LoginScreen
 import com.wassha.medicoshere.ui.screens.SignupScreen
 import com.wassha.medicoshere.ui.screens.WelcomeScreen
@@ -43,19 +44,30 @@ fun MedicosHereApp(modifier: Modifier = Modifier) {
         composable("welcome") {
             WelcomeScreen(
                 onSignupClick = { navController.navigate("signup") },
-                onLoginClick = { navController.navigate("login") }
+                onLoginClick = { navController.navigate("login") },
+                onSignupDirectClick = { navController.navigate("signup") }
             )
         }
         composable("signup") {
             SignupScreen(
                 onBackClick = { navController.popBackStack() },
-                onSignupSuccess = { navController.navigate("login") }
+                onSignupSuccess = { navController.navigate("dashboard") }
             )
         }
         composable("login") {
             LoginScreen(
                 onBackClick = { navController.popBackStack() },
-                onLoginSuccess = { /* Navigate to main app */ }
+                onLoginSuccess = { navController.navigate("dashboard") },
+                onSignupClick = { navController.navigate("signup") }
+            )
+        }
+        composable("dashboard") {
+            DashboardScreen(
+                onLogout = { 
+                    navController.navigate("welcome") {
+                        popUpTo("welcome") { inclusive = true }
+                    }
+                }
             )
         }
     }
