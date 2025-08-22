@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+  
+  <!-- Background circle -->
+  <path
+      android:fillColor="#FFFFFF"
+      android:pathData="M60,60m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0"/>
+  
+  <!-- Medical cross -->
+  <path
+      android:fillColor="#2196F3"
+      android:pathData="M55,35 L55,45 L45,45 L45,55 L55,55 L55,65 L65,65 L65,55 L75,55 L75,45 L65,45 L65,35 Z"/>
+  
+  <!-- Heart symbol -->
+  <path
+      android:fillColor="#FF4081"
+      android:pathData="M60,70 C60,70 50,60 45,55 C40,50 40,45 45,40 C50,35 55,40 60,45 C65,40 70,35 75,40 C80,45 80,50 75,55 C70,60 60,70 60,70 Z"/>
+</vector>

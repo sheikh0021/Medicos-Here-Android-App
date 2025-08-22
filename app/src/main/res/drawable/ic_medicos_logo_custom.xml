@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+  
+  <!-- Background circle -->
+  <path
+      android:fillColor="#FFFFFF"
+      android:pathData="M60,60m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0"/>
+  
+  <!-- Medical cross - main design -->
+  <path
+      android:fillColor="#FF1744"
+      android:pathData="M50,25 L50,45 L30,45 L30,55 L50,55 L50,75 L70,75 L70,55 L90,55 L90,45 L70,45 L70,25 Z"/>
+  
+  <!-- Additional medical elements -->
+  <path
+      android:fillColor="#FF6F00"
+      android:pathData="M45,80 L45,90 L35,90 L35,100 L45,100 L45,110 L55,110 L55,100 L65,100 L65,90 L55,90 L55,80 Z"/>
+  
+  <!-- Small accent elements -->
+  <path
+      android:fillColor="#FFD600"
+      android:pathData="M25,60 L35,60 L35,70 L25,70 Z"/>
+  <path
+      android:fillColor="#FFD600"
+      android:pathData="M85,60 L95,60 L95,70 L85,70 Z"/>
+</vector>
