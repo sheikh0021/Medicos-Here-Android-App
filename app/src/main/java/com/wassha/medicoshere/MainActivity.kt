@@ -7,11 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.wassha.medicoshere.ui.screens.CartItem
+import com.wassha.medicoshere.ui.screens.CartScreen
 import com.wassha.medicoshere.ui.screens.DashboardScreen
 import com.wassha.medicoshere.ui.screens.LoginScreen
 import com.wassha.medicoshere.ui.screens.SignupScreen
@@ -35,6 +37,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MedicosHereApp(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
+    var cartItems by remember { mutableStateOf(listOf<CartItem>()) }
     
     NavHost(
         navController = navController,
@@ -66,6 +69,48 @@ fun MedicosHereApp(modifier: Modifier = Modifier) {
                 onLogout = { 
                     navController.navigate("welcome") {
                         popUpTo("welcome") { inclusive = true }
+                    }
+                },
+                onCartClick = { navController.navigate("cart") },
+                cartItems = cartItems,
+                onAddToCart = { medicine ->
+                    val existingItem = cartItems.find { it.medicine.id == medicine.id }
+                    if (existingItem != null) {
+                        cartItems = cartItems.map { 
+                            if (it.medicine.id == medicine.id) {
+                                it.copy(quantity = it.quantity + 1)
+                            } else {
+                                it
+                            }
+                        }
+                    } else {
+                        cartItems = cartItems + CartItem(medicine)
+                    }
+                }
+            )
+        }
+        composable("cart") {
+            CartScreen(
+                cartItems = cartItems,
+                onBackClick = { navController.popBackStack() },
+                onUpdateQuantity = { medicineId, newQuantity ->
+                    cartItems = cartItems.map { item ->
+                        if (item.medicine.id == medicineId) {
+                            item.copy(quantity = newQuantity)
+                        } else {
+                            item
+                        }
+                    }
+                },
+                onRemoveItem = { medicineId ->
+                    cartItems = cartItems.filter { it.medicine.id != medicineId }
+                },
+                onCheckout = {
+                    // TODO: Implement checkout functionality
+                    // For now, just clear the cart and go back to dashboard
+                    cartItems = emptyList()
+                    navController.navigate("dashboard") {
+                        popUpTo("dashboard") { inclusive = true }
                     }
                 }
             )
