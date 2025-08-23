@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,23 +33,31 @@ data class Medicine(
     val isAvailable: Boolean = true
 )
 
+data class CartItem(
+    val medicine: Medicine,
+    val quantity: Int = 1
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
-    onLogout: () -> Unit
+    onLogout: () -> Unit,
+    onCartClick: () -> Unit = {},
+    cartItems: List<CartItem> = emptyList(),
+    onAddToCart: (Medicine) -> Unit = {}
 ) {
     val medicines = remember {
         listOf(
-            Medicine(1, "Paracetamol", "Pain reliever and fever reducer", "$5.99", "Pain Relief"),
-            Medicine(2, "Ibuprofen", "Anti-inflammatory pain medication", "$7.99", "Pain Relief"),
-            Medicine(3, "Amoxicillin", "Antibiotic for bacterial infections", "$12.99", "Antibiotics"),
-            Medicine(4, "Omeprazole", "Reduces stomach acid production", "$15.99", "Digestive Health"),
-            Medicine(5, "Cetirizine", "Antihistamine for allergies", "$8.99", "Allergy"),
-            Medicine(6, "Vitamin D3", "Supports bone health and immunity", "$9.99", "Vitamins"),
-            Medicine(7, "Metformin", "Diabetes medication", "$18.99", "Diabetes"),
-            Medicine(8, "Lisinopril", "Blood pressure medication", "$14.99", "Cardiovascular"),
-            Medicine(9, "Atorvastatin", "Cholesterol-lowering medication", "$22.99", "Cardiovascular"),
-            Medicine(10, "Sertraline", "Antidepressant medication", "$16.99", "Mental Health")
+            Medicine(1, "Paracetamol", "Pain reliever and fever reducer", "₹499", "Pain Relief"),
+            Medicine(2, "Ibuprofen", "Anti-inflammatory pain medication", "₹699", "Pain Relief"),
+            Medicine(3, "Amoxicillin", "Antibiotic for bacterial infections", "₹1299", "Antibiotics"),
+            Medicine(4, "Omeprazole", "Reduces stomach acid production", "₹1599", "Digestive Health"),
+            Medicine(5, "Cetirizine", "Antihistamine for allergies", "₹899", "Allergy"),
+            Medicine(6, "Vitamin D3", "Supports bone health and immunity", "₹999", "Vitamins"),
+            Medicine(7, "Metformin", "Diabetes medication", "₹1899", "Diabetes"),
+            Medicine(8, "Lisinopril", "Blood pressure medication", "₹1499", "Cardiovascular"),
+            Medicine(9, "Atorvastatin", "Cholesterol-lowering medication", "₹2299", "Cardiovascular"),
+            Medicine(10, "Sertraline", "Antidepressant medication", "₹1699", "Mental Health")
         )
     }
     
@@ -63,6 +72,8 @@ fun DashboardScreen(
         val matchesCategory = selectedCategory == "All" || medicine.category == selectedCategory
         matchesSearch && matchesCategory
     }
+    
+    val cartItemCount = cartItems.sumOf { it.quantity }
     
     Box(
         modifier = Modifier
@@ -90,8 +101,33 @@ fun DashboardScreen(
                     ) 
                 },
                 actions = {
+                    // Cart Icon with Badge
+                    Box {
+                        IconButton(onClick = onCartClick) {
+                            Icon(
+                                imageVector = Icons.Default.ShoppingCart,
+                                contentDescription = "Cart",
+                                tint = Color(0xFF2E7D32)
+                            )
+                        }
+                        if (cartItemCount > 0) {
+                            Badge(
+                                modifier = Modifier
+                                    .align(Alignment.TopEnd)
+                                    .offset(x = (-8).dp, y = 8.dp),
+                                containerColor = Color(0xFFE91E63)
+                            ) {
+                                Text(
+                                    text = cartItemCount.toString(),
+                                    color = Color.White,
+                                    fontSize = 10.sp
+                                )
+                            }
+                        }
+                    }
+                    
                     IconButton(onClick = onLogout) {
-                                                                    Icon(
+                        Icon(
                             imageVector = Icons.Default.ExitToApp,
                             contentDescription = "Logout",
                             tint = Color(0xFF2E7D32)
@@ -207,7 +243,10 @@ fun DashboardScreen(
                 }
                 
                 items(filteredMedicines) { medicine ->
-                    MedicineCard(medicine = medicine)
+                    MedicineCard(
+                        medicine = medicine,
+                        onAddToCart = { onAddToCart(medicine) }
+                    )
                 }
             }
         }
@@ -216,7 +255,10 @@ fun DashboardScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MedicineCard(medicine: Medicine) {
+fun MedicineCard(
+    medicine: Medicine,
+    onAddToCart: () -> Unit
+) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -310,7 +352,7 @@ fun MedicineCard(medicine: Medicine) {
             
             // Action Button
             IconButton(
-                onClick = { /* Add to cart or view details */ }
+                onClick = onAddToCart
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
