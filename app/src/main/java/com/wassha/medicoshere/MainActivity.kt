@@ -16,6 +16,7 @@ import com.wassha.medicoshere.ui.screens.CartItem
 import com.wassha.medicoshere.ui.screens.CartScreen
 import com.wassha.medicoshere.ui.screens.DashboardScreen
 import com.wassha.medicoshere.ui.screens.LoginScreen
+import com.wassha.medicoshere.ui.screens.PaymentScreen
 import com.wassha.medicoshere.ui.screens.SignupScreen
 import com.wassha.medicoshere.ui.screens.WelcomeScreen
 import com.wassha.medicoshere.ui.theme.MedicosHereTheme
@@ -106,8 +107,20 @@ fun MedicosHereApp(modifier: Modifier = Modifier) {
                     cartItems = cartItems.filter { it.medicine.id != medicineId }
                 },
                 onCheckout = {
-                    // TODO: Implement checkout functionality
-                    // For now, just clear the cart and go back to dashboard
+                    navController.navigate("payment")
+                }
+            )
+        }
+        composable("payment") {
+            val totalAmount = cartItems.sumOf { 
+                val price = it.medicine.price.removePrefix("₹").toDoubleOrNull() ?: 0.0
+                price * it.quantity 
+            }
+            PaymentScreen(
+                totalAmount = totalAmount,
+                onBackClick = { navController.popBackStack() },
+                onPaymentComplete = {
+                    // Clear cart and return to dashboard
                     cartItems = emptyList()
                     navController.navigate("dashboard") {
                         popUpTo("dashboard") { inclusive = true }
